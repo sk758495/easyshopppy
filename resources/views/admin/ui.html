@@ -1,0 +1,61 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <!-- Form Elements -->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>CATEGORY</h2>
+                        <h5>Welcome Jhon Deo , Love to see you back. </h5>
+
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+                <hr />
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <!-- Hover Rows  -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                View Category
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>CATEGORY Name</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data as $item)
+                                        <tr>
+                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->category_name }}</td>
+
+                                            <td> <a href="{{ url('admin/edit_category', $item->id) }}"><button
+                                                            class="btn btn-success">Edit</button></a>
+                                            </td>
+                                            <td><a href="{{ url('admin/delete_category', $item->id) }}"><button
+                                                            class="btn btn-danger">Delete</button></a>
+                                            </td>
+
+                                        </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+</div>
