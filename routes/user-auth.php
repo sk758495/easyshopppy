@@ -23,5 +23,8 @@ Route::get('/add_cart/{id}', [UserController::class, 'add_cart'])->name('user.ad
 
 Route::get('/cart', [UserController::class, 'index'])->name('cart.index');
 
+Route::get('/view_cart', [UserController::class, 'view_cart'])->name('user.view_cart');
+
 
 Route::get('/product/{id}', [UserController::class, 'show_product'])->name('product.show');
+
