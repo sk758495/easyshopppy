@@ -13,33 +13,33 @@ class UserController extends Controller
     public function index() {
         $data = Products::all();
         $count = $this->cart_count(); // Get the cart count
-    
+
         return view('user.index', compact('data', 'count')); // Pass the count to the view
     }
-    
+
 
     public function show_detail($id) {
         // Check if the user is authenticated
         if (Auth::check()) {
             $user = Auth::user(); // Correctly get the authenticated user
             $userid = $user->id; // Access the id property directly
-    
+
             // Count the items in the cart for the authenticated user
             $count = Cart::where('user_id', $userid)->count();
         } else {
             $count = 0; // Set count to 0 if the user is not authenticated
         }
-    
+
         // Find the product by ID
         $data = Products::find($id);
         if (!$data) {
             return redirect()->back()->with('error', 'Product not found.');
         }
-    
+
         // Pass the product data and cart count to the view
         return view('user.show_detail', compact('data', 'count'));
     }
-    
+
 
     public function cart_count() {
     $user = Auth::user();
@@ -77,18 +77,18 @@ class UserController extends Controller
 
     public function show_product($id) {
         $product = Products::find($id);
-    
+
         if (!$product) {
             return redirect()->back()->with('error', 'Product not found.');
         }
-    
+
         return view('user.product_detail', compact('product'));
     }
-    
+
 
     public function view_cart() {
-       
-        return view('user.cart');
+        $count = $this->cart_count();
+        return view('user.cart',compact('count'));
     }
 
 
